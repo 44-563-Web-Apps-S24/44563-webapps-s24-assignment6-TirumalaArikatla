@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+ 
+<body>
+<h1>Tirumala Arikatla discount calculations</h1>
+<h2>Getting input</h2>
+<label for="rate">Enter price per</label>
+<input type="number" name="rate" id="rate" value="10"><br>
+<label for="products">Enter no of items</label>
+<input type="number" name="products" id="products" value="9"><br>
+<label for="discount">Enter the discount percent</label>
+<input type="number" name="discount" id="discount" value="5"><br>
+<input type="button" onclick="discount()" value="Show total">
+<p id="output">OutPut</p>
+
+<form>
+    <label>
+    <input type="radio" name="op" value="sum" onClick="chooseOp()"> sum
+    </label><br>
+    <label>
+    <input type="radio" name="op" value="mult" onClick="chooseOp()"> mult
+    </label><br>
+    <label>
+    <input type="radio" name="op" value="exp" onClick="chooseOp()"> exp
+    </label><br>
+    </form>
+    
+<p id="output1">output1</p>
+<script> 
+
+
+function discount()
+{
+    var price = document.getElementById("rate").value
+    var count = document.getElementById("products").value
+    var disc = document.getElementById("discount").value
+    var sum,dis;
+    var myOutput = "";
+    for (let index = 0; index < 5; index++) {
+        sum= price*count;
+        dis=(sum*disc)/100;
+        sum = sum-dis;
+        myOutput+=disc+"%"+"is"+sum+";";
+        
+        disc++;
+    }
+    document.getElementById("output").innerHTML = "Total are: "+myOutput;     
+}
+
+function chooseOp()
+{
+    
+            var price = parseFloat(document.getElementById("rate").value);
+            console.log(price);
+            var discount = parseFloat(document.getElementById("discount").value);
+            var op = document.querySelector('input[name="op"]:checked').value;
+            var result;
+            var operationSign;
+ 
+            switch (op) {
+                case "sum":
+                    result = price + discount;
+                    operationSign = "+";
+                    break;
+                case "mult":
+                    result = price * discount;
+                    operationSign = "*";
+                    break;
+                case "exp":
+                    result = price ** discount;
+                    operationSign = "**";
+                    break;
+                default:
+                    result = "Invalid operation";
+                    operationSign = "";
+                    break;
+            }
+ 
+            var outputMessage = ` ${op} of ${price} and ${discount} is  ${result}`;
+            document.getElementById("output1").textContent = "Result: " + result;
+            document.getElementById("output1").textContent = outputMessage;
+        }
+    
+
+
+</script>
+
+</body>
+</html>
