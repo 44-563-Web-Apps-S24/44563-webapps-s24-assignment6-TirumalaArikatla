@@ -40,6 +40,11 @@
         
                 const result = document.getElementById("resultHolder");
                 result.innerHTML = `Correct: ${correct} | Wrong: ${wrong}`;
+                if(wrong>correct)
+                {
+                    const result = document.getElementById("resultHolder");
+                result.innerHTML = "Sorry, to many wrong gusses";
+                }
             }
         </script>
         <script>
@@ -64,6 +69,7 @@
                 break;
         }
     }
+
         </script>
     </body>
     </html>
